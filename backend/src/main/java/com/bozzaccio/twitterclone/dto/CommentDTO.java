@@ -1,0 +1,23 @@
+package com.bozzaccio.twitterclone.dto;
+
+import com.bozzaccio.twitterclone.entity.Comment;
+
+public class CommentDTO extends AbstractDTO<Long> {
+
+    private static final long serialVersionUID = -2762919556600912186L;
+
+    private String text;
+
+    public CommentDTO(Comment entity) {
+        super(entity);
+        this.text = entity.getText();
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+}

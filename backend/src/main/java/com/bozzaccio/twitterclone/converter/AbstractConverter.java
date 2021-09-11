@@ -1,4 +1,4 @@
-package com.bozzaccio.twitterclone.dto;
+package com.bozzaccio.twitterclone.converter;
 
 public abstract class AbstractConverter<DTO, E> {
 

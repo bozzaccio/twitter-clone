@@ -1,4 +1,4 @@
-package com.bozzaccio.twitterclone.utils;
+package com.bozzaccio.twitterclone.util;
 
 public final class ErrorUtils {
 

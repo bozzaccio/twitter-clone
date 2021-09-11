@@ -1,6 +1,6 @@
 package com.bozzaccio.twitterclone.service;
 
-import com.bozzaccio.twitterclone.dto.AbstractConverter;
+import com.bozzaccio.twitterclone.converter.AbstractConverter;
 import com.bozzaccio.twitterclone.entity.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
-import static com.bozzaccio.twitterclone.utils.ErrorUtils.*;
+import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
 public abstract class BaseCRUDServiceImpl<DTO, E extends BaseEntity<ID>, ID> implements IBaseCRUDService<DTO, E, ID> {
 
