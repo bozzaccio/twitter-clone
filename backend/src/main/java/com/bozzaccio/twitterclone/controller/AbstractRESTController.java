@@ -1,14 +1,14 @@
 package com.bozzaccio.twitterclone.controller;
 
-import com.bozzaccio.twitterclone.entity.BaseEntity;
-import com.bozzaccio.twitterclone.service.BaseCRUDServiceImpl;
+import com.bozzaccio.twitterclone.service.IBaseCRUDService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
-public class AbstractRESTController<DTO, E extends BaseEntity<ID>, ID, S extends BaseCRUDServiceImpl<DTO, E, ID>> {
+public class AbstractRESTController<DTO, ID, S extends IBaseCRUDService<DTO, ID>>
+        implements IController {
 
     protected final S service;
 
@@ -18,14 +18,12 @@ public class AbstractRESTController<DTO, E extends BaseEntity<ID>, ID, S extends
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DTO> getById(@PathVariable ID id) {
+    public ResponseEntity<?> getById(@PathVariable ID id) {
 
         try {
             return ResponseEntity.ok(service.getById(id));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
+            return handleException(e);
         }
     }
 
@@ -35,35 +33,28 @@ public class AbstractRESTController<DTO, E extends BaseEntity<ID>, ID, S extends
         try {
             service.deleteById(id);
             return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
+            return handleException(e);
         }
     }
 
     @PostMapping
-    public ResponseEntity<DTO> create(@RequestBody DTO dto) {
+    public ResponseEntity<?> create(@RequestBody DTO dto) {
 
         try {
-            return ResponseEntity.ok(service.create(service.converter.convertDTO(dto)));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.ok(service.create(dto));
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
+            return handleException(e);
         }
     }
 
     @PutMapping
-    public ResponseEntity<DTO> update(@RequestBody DTO dto) {
+    public ResponseEntity<?> update(@RequestBody DTO dto) {
 
         try {
-            return ResponseEntity.ok(service.create(service.converter.convertDTO(dto)));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.ok(service.create(dto));
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
+            return handleException(e);
         }
     }
-
 }

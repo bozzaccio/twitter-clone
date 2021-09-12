@@ -6,3 +6,7 @@ server:
 spring:
   profiles:
     active: dev
+
+security:
+  jwtSecret: twitterCloneSecret
+  jwtExpirationMs: 86400000

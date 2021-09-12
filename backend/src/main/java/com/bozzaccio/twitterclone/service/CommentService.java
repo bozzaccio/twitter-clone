@@ -7,7 +7,9 @@ import com.bozzaccio.twitterclone.entity.Comment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommentService extends BaseCRUDServiceImpl<CommentDTO, Comment, Long> {
+public class CommentService
+        extends BaseCRUDServiceImpl<CommentDTO, Comment, Long>
+        implements IBaseCRUDService<CommentDTO, Long> {
 
     public CommentService(CommentRepository repository, CommentConverter converter) {
         super(repository, converter);

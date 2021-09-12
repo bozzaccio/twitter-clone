@@ -26,6 +26,10 @@ public class Reaction extends BaseEntity<Long> {
     @Column(name = "QUANTITY", nullable = false)
     private Long quantity;
 
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+    private User user;
+
     @Override
     public Long getId() {
         return this.Id;
@@ -50,5 +54,13 @@ public class Reaction extends BaseEntity<Long> {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

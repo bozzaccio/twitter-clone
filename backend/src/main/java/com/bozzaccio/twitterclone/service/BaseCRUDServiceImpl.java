@@ -1,6 +1,7 @@
 package com.bozzaccio.twitterclone.service;
 
 import com.bozzaccio.twitterclone.converter.AbstractConverter;
+import com.bozzaccio.twitterclone.dto.AbstractDTO;
 import com.bozzaccio.twitterclone.entity.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
-public abstract class BaseCRUDServiceImpl<DTO, E extends BaseEntity<ID>, ID> implements IBaseCRUDService<DTO, E, ID> {
+public abstract class BaseCRUDServiceImpl<DTO extends AbstractDTO<ID>, E extends BaseEntity<ID>, ID> {
 
     protected final JpaRepository<E, ID> repository;
     public final AbstractConverter<DTO, E> converter;
@@ -27,7 +28,6 @@ public abstract class BaseCRUDServiceImpl<DTO, E extends BaseEntity<ID>, ID> imp
     }
 
 
-    @Override
     @Transactional(readOnly = true)
     public DTO getById(ID Id) {
 
@@ -42,7 +42,6 @@ public abstract class BaseCRUDServiceImpl<DTO, E extends BaseEntity<ID>, ID> imp
         }
     }
 
-    @Override
     @Transactional
     public void deleteById(ID Id) {
 
@@ -56,24 +55,22 @@ public abstract class BaseCRUDServiceImpl<DTO, E extends BaseEntity<ID>, ID> imp
         }
     }
 
-    @Override
     @Transactional
-    public DTO update(E entity) {
+    public DTO update(DTO dto) {
 
-        Assert.notNull(entity, buildErrorMessage(BASE_PARAMETER_ERROR, ENTITY, NULL_MESSAGE_ERROR));
-        Assert.notNull(entity.getId(), buildErrorMessage(BASE_PARAMETER_ERROR, ID_PARAM, NULL_MESSAGE_ERROR));
+        Assert.notNull(dto, buildErrorMessage(BASE_PARAMETER_ERROR, DTO, NULL_MESSAGE_ERROR));
+        Assert.notNull(dto.getID(), buildErrorMessage(BASE_PARAMETER_ERROR, ID_PARAM, NULL_MESSAGE_ERROR));
 
-        E savedEntity = repository.saveAndFlush(entity);
+        E savedEntity = repository.saveAndFlush(converter.convertDTO(dto));
         return converter.convertEntity(savedEntity);
     }
 
-    @Override
     @Transactional
-    public DTO create(E entity) {
+    public DTO create(DTO dto) {
 
-        Assert.notNull(entity, buildErrorMessage(BASE_PARAMETER_ERROR, ENTITY, NULL_MESSAGE_ERROR));
+        Assert.notNull(dto, buildErrorMessage(BASE_PARAMETER_ERROR, DTO, NULL_MESSAGE_ERROR));
 
-        E savedEntity = repository.saveAndFlush(entity);
+        E savedEntity = repository.saveAndFlush(converter.convertDTO(dto));
         return converter.convertEntity(savedEntity);
     }
 }

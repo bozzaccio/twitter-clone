@@ -7,7 +7,9 @@ import com.bozzaccio.twitterclone.entity.Post;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PostService extends BaseCRUDServiceImpl<PostDTO, Post, Long> {
+public class PostService
+        extends BaseCRUDServiceImpl<PostDTO, Post, Long>
+        implements IBaseCRUDService<PostDTO, Long> {
 
     public PostService(PostRepository repository, PostConverter converter) {
         super(repository, converter);

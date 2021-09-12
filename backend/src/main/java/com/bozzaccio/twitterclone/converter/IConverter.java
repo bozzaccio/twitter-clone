@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public interface IConverter<ID> {
 
-    default void convertBaseEntityToDTO(AbstractDTO<ID> dto, BaseEntity<ID> entity) {
+    default void convertDTO2BaseEntity(AbstractDTO<ID> dto, BaseEntity<ID> entity) {
 
         if (Objects.nonNull(dto.getID()))
             entity.setId(dto.getID());

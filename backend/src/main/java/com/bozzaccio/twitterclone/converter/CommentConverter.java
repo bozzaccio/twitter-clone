@@ -23,7 +23,7 @@ public class CommentConverter extends AbstractConverter<CommentDTO, Comment> imp
 
         Comment comment = new Comment();
 
-        convertBaseEntityToDTO(dto, comment);
+        convertDTO2BaseEntity(dto, comment);
         comment.setText(dto.getText());
 
         return comment;

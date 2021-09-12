@@ -23,7 +23,7 @@ public class PostConverter extends AbstractConverter<PostDTO, Post> implements I
 
         Post post = new Post();
 
-        convertBaseEntityToDTO(dto, post);
+        convertDTO2BaseEntity(dto, post);
         post.setDescription(dto.getDescription());
         post.setTitle(dto.getTitle());
 

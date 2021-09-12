@@ -1,12 +1,12 @@
 package com.bozzaccio.twitterclone.service;
 
-public interface IBaseCRUDService<DTO, E, ID> {
+public interface IBaseCRUDService<DTO, ID> {
 
     DTO getById(ID Id);
 
-    DTO create(E entity);
+    DTO create(DTO dto);
 
-    DTO update(E entity);
+    DTO update(DTO dto);
 
     void deleteById(ID Id);
 

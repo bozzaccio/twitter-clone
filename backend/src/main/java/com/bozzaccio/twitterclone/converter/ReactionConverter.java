@@ -23,7 +23,7 @@ public class ReactionConverter extends AbstractConverter<ReactionDTO, Reaction> 
 
         Reaction reaction = new Reaction();
 
-        convertBaseEntityToDTO(dto, reaction);
+        convertDTO2BaseEntity(dto, reaction);
         reaction.setReaction(dto.getReaction());
 
         return reaction;
