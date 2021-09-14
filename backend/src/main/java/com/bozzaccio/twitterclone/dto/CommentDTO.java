@@ -8,6 +8,9 @@ public class CommentDTO extends AbstractDTO<Long> {
 
     private String text;
 
+    public CommentDTO() {
+    }
+
     public CommentDTO(Comment entity) {
         super(entity);
         this.text = entity.getText();

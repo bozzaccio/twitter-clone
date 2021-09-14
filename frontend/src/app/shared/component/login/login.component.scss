@@ -1,0 +1,65 @@
+@import "../../../css/partial/colors";
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+.card-container.card {
+    width: 400px;
+    height: 400px;
+    padding: 40px 40px;
+    position: relative;
+    user-select: none;
+}
+
+.card {
+    background-color: #f7f7f7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+button {
+    position: absolute;
+    bottom: 10px;
+    width: 150px;
+}
+
+#register {
+    left: 10px;
+}
+
+#login {
+    right: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.error-container {
+    width: 100%;
+    min-height: 30px;
+    background-color: $error;
+}
+
+span {
+    color: $white;
+}

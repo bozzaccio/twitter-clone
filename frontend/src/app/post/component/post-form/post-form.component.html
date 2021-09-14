@@ -1,0 +1,11 @@
+<form [formGroup]="postForm" (ngSubmit)="onFormSubit()">
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">Create Post</button>
+</form>

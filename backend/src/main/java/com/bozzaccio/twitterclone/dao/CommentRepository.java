@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    @Query("SELECT COUNT(c) FROM Comment c WHERE c.post_id=:postId")
+    @Query("SELECT COUNT(c) FROM Comment c JOIN Post p WHERE p.id =:id")
     Long countCommentByPostId(@Param("id") Long postId);
 }

@@ -2,10 +2,12 @@ package com.bozzaccio.twitterclone.converter;
 
 import com.bozzaccio.twitterclone.dto.ReactionDTO;
 import com.bozzaccio.twitterclone.entity.Reaction;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
+@Component
 public class ReactionConverter extends AbstractConverter<ReactionDTO, Reaction> implements IConverter<Long> {
 
     @Override

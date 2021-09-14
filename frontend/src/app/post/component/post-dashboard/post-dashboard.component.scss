@@ -1,0 +1,10 @@
+#post-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+app-post-list, app-post-form {
+    margin-top: 10px;
+}

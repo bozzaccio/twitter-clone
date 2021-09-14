@@ -1,5 +1,6 @@
 package com.bozzaccio.twitterclone.dto;
 
+import com.bozzaccio.twitterclone.entity.BaseEntity;
 import com.bozzaccio.twitterclone.entity.Post;
 
 public class PostDTO extends AbstractDTO<Long> {
@@ -8,6 +9,13 @@ public class PostDTO extends AbstractDTO<Long> {
 
     private String title;
     private String description;
+
+    public PostDTO() {
+    }
+
+    public PostDTO(BaseEntity<Long> entity) {
+        super(entity);
+    }
 
     public PostDTO(Post entity) {
         super(entity);

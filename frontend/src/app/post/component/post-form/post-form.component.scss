@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  mat-form-field {
+    width: 500px;
+  }
+
+  textarea {
+    resize: none;
+    overflow: auto;
+    height: 100px;
+  }
+  
+}
