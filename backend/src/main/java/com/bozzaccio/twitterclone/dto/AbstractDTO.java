@@ -25,7 +25,7 @@ public abstract class AbstractDTO<ID> implements Serializable {
         this.version = entity.getVersion();
     }
 
-    private AbstractDTO() {
+    public AbstractDTO() {
     }
 
     public ID getID() {

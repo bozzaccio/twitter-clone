@@ -2,10 +2,12 @@ package com.bozzaccio.twitterclone.converter;
 
 import com.bozzaccio.twitterclone.dto.PostDTO;
 import com.bozzaccio.twitterclone.entity.Post;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
+@Component
 public class PostConverter extends AbstractConverter<PostDTO, Post> implements IConverter<Long> {
 
     @Override

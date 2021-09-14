@@ -15,7 +15,7 @@ import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 public abstract class BaseCRUDServiceImpl<DTO extends AbstractDTO<ID>, E extends BaseEntity<ID>, ID> {
 
     protected final JpaRepository<E, ID> repository;
-    public final AbstractConverter<DTO, E> converter;
+    protected final AbstractConverter<DTO, E> converter;
 
     public BaseCRUDServiceImpl(JpaRepository<E, ID> repository,
                                AbstractConverter<DTO, E> converter) {

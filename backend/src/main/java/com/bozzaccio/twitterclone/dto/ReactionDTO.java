@@ -9,6 +9,9 @@ public class ReactionDTO extends AbstractDTO<Long> {
 
     private ReactionEnum reaction;
 
+    public ReactionDTO() {
+    }
+
     public ReactionDTO(Reaction entity) {
         super(entity);
         this.reaction = entity.getReaction();

@@ -5,6 +5,7 @@ import com.bozzaccio.twitterclone.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -12,6 +13,7 @@ import javax.persistence.EntityNotFoundException;
 
 import static com.bozzaccio.twitterclone.util.ErrorUtils.*;
 
+@Service
 public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
