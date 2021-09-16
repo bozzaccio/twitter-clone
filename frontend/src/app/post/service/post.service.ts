@@ -45,7 +45,7 @@ export class PostService extends RequestService {
 
   public update(dto: Post): Observable<Post> {
 
-    return this._http.put(this._getUrl(dto.id), dto, RequestService.baseHttpOptions).pipe(
+    return this._http.put(this._getUrl(), dto, RequestService.baseHttpOptions).pipe(
       map((res: any) => {
         return (res || {}) as Post;
       })

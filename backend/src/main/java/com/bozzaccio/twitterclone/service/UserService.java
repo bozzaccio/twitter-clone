@@ -2,6 +2,7 @@ package com.bozzaccio.twitterclone.service;
 
 import com.bozzaccio.twitterclone.dao.UserRepository;
 import com.bozzaccio.twitterclone.entity.User;
+import com.bozzaccio.twitterclone.security.UserLogged;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,7 +34,7 @@ public class UserService implements UserDetailsService {
                         USER_NOT_FOUND_FOR_USERNAME_ERROR,
                         username)));
 
-        return com.bozzaccio.twitterclone.security.User.build(user);
+        return UserLogged.build(user);
     }
 
     public boolean checkIfUserExistsByUsername(String username) {

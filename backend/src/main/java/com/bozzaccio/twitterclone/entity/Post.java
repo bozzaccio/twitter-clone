@@ -4,7 +4,9 @@ package com.bozzaccio.twitterclone.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,10 +28,18 @@ public class Post extends BaseEntity<Long> {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToMany(mappedBy = "post",
+    @OneToMany(mappedBy = "postComment",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
+
+    @Column(name = "COMMENT_COUNTER")
+    private Long commentCounter;
+
+    @OneToMany(mappedBy = "postReaction",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Reaction> reactions = new ArrayList<>();
 
     @Override
     public Long getId() {
@@ -63,5 +73,30 @@ public class Post extends BaseEntity<Long> {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<Reaction> reactions) {
+        this.reactions = reactions;
+    }
+
+    public Long getCommentCounter() {
+        return commentCounter;
+    }
+
+    public void setCommentCounter(Long commentCounter) {
+        this.commentCounter = commentCounter;
+    }
+
+    public void increaseCommentCounter() {
+
+        if (commentCounter == null) {
+            this.commentCounter = 1L;
+        } else {
+            this.commentCounter = this.commentCounter + 1L;
+        }
     }
 }

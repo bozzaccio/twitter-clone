@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, Input, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Post } from 'src/app/shared/interface/post.interface';
 
 @Component({
@@ -9,22 +9,48 @@ import { Post } from 'src/app/shared/interface/post.interface';
 })
 export class PostFormComponent implements OnInit {
 
+  @Input() dto?: Post;
+  @Input() isEdit: boolean = false;
+
   @Output() onPostEvent: EventEmitter<any> = new EventEmitter();
+  @Output() onCancelEvent: EventEmitter<any> = new EventEmitter();
 
   public postForm!: FormGroup;
+  public title!: string;
+  public saveLabel!: string;
+  public cancelLabel!: string;
 
   constructor(private _formBuilder: FormBuilder) {
+
     this.postForm = this._buildPostForm();
   }
 
   ngOnInit(): void {
+    if (this.dto && this.isEdit) {
+      this._setCategoryFormValues(this.dto);
+      this.title = "Update post";
+      this.cancelLabel = "Cancel";
+      this.saveLabel = "Save";
+    } else {
+      this.title = "Create new post";
+      this.saveLabel = "Create post";
+    }
   }
 
-  public onFormSubit(): void {
+  public onFormSubit(formDirective: FormGroupDirective): void {
 
     const dto: Post = this.postForm.value;
 
     this.onPostEvent.emit(dto);
+
+    formDirective.resetForm();
+    this.postForm.reset();
+    this.postForm.markAsPristine();
+    this.postForm.markAsUntouched();
+  }
+
+  public onCancel(): void {
+    this.onCancelEvent.emit();
   }
 
   private _buildPostForm(): FormGroup {

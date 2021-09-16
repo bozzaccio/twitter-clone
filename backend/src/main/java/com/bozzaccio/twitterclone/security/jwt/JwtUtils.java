@@ -1,7 +1,7 @@
 package com.bozzaccio.twitterclone.security.jwt;
 
 import com.bozzaccio.twitterclone.security.JWTAuthException;
-import com.bozzaccio.twitterclone.security.User;
+import com.bozzaccio.twitterclone.security.UserLogged;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,9 @@ public class JwtUtils {
     private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
-        User userPrincipal = (User) authentication.getPrincipal();
+        UserLogged userLogged = (UserLogged) authentication.getPrincipal();
 
-        return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
+        return Jwts.builder().setSubject((userLogged.getUsername())).setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }

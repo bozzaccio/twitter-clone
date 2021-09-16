@@ -1,5 +1,6 @@
 package com.bozzaccio.twitterclone.entity;
 
+import com.bozzaccio.twitterclone.security.UserLogged;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -38,6 +39,6 @@ public abstract class BaseEntity<ID> extends Auditable implements Serializable {
             return null;
         }
 
-        return ((com.bozzaccio.twitterclone.security.User) authentication.getPrincipal()).getUsername();
+        return ((UserLogged) authentication.getPrincipal()).getUsername();
     }
 }

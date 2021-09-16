@@ -8,6 +8,8 @@ public class ReactionDTO extends AbstractDTO<Long> {
     private static final long serialVersionUID = 5378990204298854441L;
 
     private ReactionEnum reaction;
+    private Long postId;
+
 
     public ReactionDTO() {
     }
@@ -23,5 +25,13 @@ public class ReactionDTO extends AbstractDTO<Long> {
 
     public void setReaction(ReactionEnum reaction) {
         this.reaction = reaction;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 }

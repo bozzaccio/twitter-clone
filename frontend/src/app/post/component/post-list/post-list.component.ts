@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Reaction, ReactionType } from './../../../shared/interface/reaction.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Post } from 'src/app/shared/interface/post.interface';
 @Component({
   selector: 'app-post-list',
@@ -8,4 +9,20 @@ import { Post } from 'src/app/shared/interface/post.interface';
 export class PostListComponent {
 
   @Input() postList: Post[] = [];
+
+  @Output() onDeleteEvent: EventEmitter<Post> = new EventEmitter();
+  @Output() onUpdateEvent: EventEmitter<Post> = new EventEmitter();
+  @Output() onReactionEvent: EventEmitter<Reaction> = new EventEmitter();
+
+  public onDelete(post: Post): void {
+    this.onDeleteEvent.emit(post);
+  }
+
+  public onUpdate(post: Post): void {
+    this.onUpdateEvent.emit(post);
+  }
+
+  public onReaction(reaction: Reaction): void {
+    this.onReactionEvent.emit(reaction);
+  }
 }

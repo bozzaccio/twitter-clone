@@ -7,11 +7,11 @@
                 <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item (click)="onUpdate()">
                     <mat-icon>edit</mat-icon>
                     <span>Edit</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="onDelete()">
                     <mat-icon>delete</mat-icon>
                     <span>Remove</span>
                 </button>
@@ -21,13 +21,13 @@
     <div class="post-content__container">
         <p>{{post?.description}}</p>
     </div>
-    <div class="post-footer__container">
-        <mat-icon class="reaction" matBadgePosition="before" [matBadge]="post?.reactionMap?.get('LIKE')"
+    <div class="post-footer__container" *ngIf="showAction">
+        <mat-icon (click)="onAddReaction('LIKE')" class="reaction" matBadgePosition="before" [matBadge]="likeCounter"
             matBadgeColor="primary">thumb_up</mat-icon>
-        <mat-icon class="reaction" matBadgePosition="before" [matBadge]="post?.reactionMap?.get('SMILE')"
+        <mat-icon (click)="onAddReaction('LOVE')" class="reaction" matBadgePosition="before" [matBadge]="loveCounter"
             matBadgeColor="accent">favorite</mat-icon>
-        <mat-icon class="reaction" matBadgePosition="before" [matBadge]="post?.reactionMap?.get('LOVE')"
+        <mat-icon (click)="onAddReaction('SMILE')" class="reaction" matBadgePosition="before" [matBadge]="smileCounter"
             matBadgeColor="warn">mood</mat-icon>
-        <mat-icon class="comment" [matBadge]="post?.totalComment" matBadgeColor="warn">chat</mat-icon>
+        <mat-icon class="comment" [matBadge]="commentCounter" matBadgeColor="warn">chat</mat-icon>
     </div>
 </div>

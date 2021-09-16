@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { PostDashboardComponent } from './component/post-dashboard/post-dashboard.component';
@@ -14,14 +14,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { PostFormModalComponent } from './component/post-form-modal/post-form-modal.component';
 
 @NgModule({
   declarations: [
     PostDashboardComponent,
     PostComponent,
     PostListComponent,
-    PostFormComponent
+    PostFormComponent,
+    PostFormModalComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,10 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
-    MatMenuModule
-  ]
+    MatMenuModule,
+    MatDialogModule
+  ],
+  entryComponents: [PostFormModalComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class PostModule { }

@@ -2,6 +2,10 @@ package com.bozzaccio.twitterclone.dto;
 
 import com.bozzaccio.twitterclone.entity.BaseEntity;
 import com.bozzaccio.twitterclone.entity.Post;
+import com.bozzaccio.twitterclone.util.ReactionEnum;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostDTO extends AbstractDTO<Long> {
 
@@ -9,6 +13,8 @@ public class PostDTO extends AbstractDTO<Long> {
 
     private String title;
     private String description;
+    private Long totalComment;
+    private Map<ReactionEnum, Long> reactionMap;
 
     public PostDTO() {
     }
@@ -21,6 +27,8 @@ public class PostDTO extends AbstractDTO<Long> {
         super(entity);
         this.title = entity.getTitle();
         this.description = entity.getDescription();
+        this.totalComment = entity.getCommentCounter();
+        this.reactionMap = new HashMap<>();
     }
 
     public String getTitle() {
@@ -37,5 +45,21 @@ public class PostDTO extends AbstractDTO<Long> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getTotalComment() {
+        return totalComment;
+    }
+
+    public void setTotalComment(Long totalComment) {
+        this.totalComment = totalComment;
+    }
+
+    public Map<ReactionEnum, Long> getReactionMap() {
+        return reactionMap;
+    }
+
+    public void setReactionMap(Map<ReactionEnum, Long> reactionMap) {
+        this.reactionMap = reactionMap;
     }
 }
