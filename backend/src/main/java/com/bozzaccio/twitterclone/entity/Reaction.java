@@ -26,9 +26,9 @@ public class Reaction extends BaseEntity<Long> {
     @Column(name = "QUANTITY", nullable = false)
     private Long quantity;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id", nullable = false, foreignKey = @ForeignKey(name = "FK_T_POST_REACTION"))
+    private Post postReaction;
 
     @Override
     public Long getId() {
@@ -56,11 +56,15 @@ public class Reaction extends BaseEntity<Long> {
         this.quantity = quantity;
     }
 
-    public User getUser() {
-        return user;
+    public void addOneReaction() {
+        this.quantity = this.quantity + 1;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public Post getPostReaction() {
+        return postReaction;
+    }
+
+    public void setPostReaction(Post postReaction) {
+        this.postReaction = postReaction;
     }
 }

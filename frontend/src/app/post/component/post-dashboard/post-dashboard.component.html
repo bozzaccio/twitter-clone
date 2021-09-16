@@ -1,4 +1,9 @@
 <div id="post-dashboard">
-    <app-post-form (onPostEvent)="onPostSubmit($event)"></app-post-form>
-    <app-post-list [postList]="postList"></app-post-list>
+    <app-post-form (onPostEvent)="onPostCreate($event)"></app-post-form>
+    <app-post-list 
+    [postList]="postList"
+    (onDeleteEvent)="onPostDelete($event)"
+    (onUpdateEvent)="onPostUpdate($event)"
+    (onReactionEvent)="onReactionEvent($event)">
+</app-post-list>
 </div>

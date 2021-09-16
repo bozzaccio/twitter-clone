@@ -1,28 +1,31 @@
-<div class="card card-container">
-    <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
-        <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+<div id="container">
+    <div class="card card-container">
+        <form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+            <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
 
-        <mat-form-field appearance="outline">
-            <mat-label>Username</mat-label>
-            <input formControlName="username" matInput placeholder="Placeholder">
-            <mat-icon matSuffix>person</mat-icon>
-            <mat-hint>username must contain 3 characters</mat-hint>
-        </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput placeholder="Placeholder">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-hint>username must contain 3 characters</mat-hint>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Passworrd</mat-label>
-            <input formControlName="password" type="password" matInput placeholder="Placeholder">
-            <mat-icon matSuffix>lock</mat-icon>
-            <mat-hint>password must contain 5 characters</mat-hint>
-        </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Passworrd</mat-label>
+                <input formControlName="password" type="password" matInput placeholder="Placeholder">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint>password must contain 5 characters</mat-hint>
+            </mat-form-field>
 
-        <ng-container *ngIf="hasError">
-            <div class="error-container">
-                <span>{{errorMessage}}</span>
-            </div>
-        </ng-container>
+            <ng-container *ngIf="hasError">
+                <div class="error-container">
+                    <span>{{errorMessage}}</span>
+                </div>
+            </ng-container>
 
-        <button id="register" type="button" (click)="onRegister()" mat-raised-button color="warn">Register</button>
-        <button id="login" [disabled]="authForm.invalid" type="submit" mat-raised-button color="primary">Login</button>
-    </form>
+            <button id="register" type="button" (click)="onRegister()" mat-raised-button color="warn">Register</button>
+            <button id="login" [disabled]="authForm.invalid" type="submit" mat-raised-button
+                color="primary">Login</button>
+        </form>
+    </div>
 </div>

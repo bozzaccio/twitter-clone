@@ -4,6 +4,6 @@ import { ReactionType } from "./reaction.interface";
 export interface Post extends BaseModel {
     title: string;
     description?: string;
-    reactionMap?: Map<ReactionType, number>;
+    reactionMap?: any;
     totalComment?: number;
 }

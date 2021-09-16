@@ -1,7 +1,8 @@
 
 export interface Reaction {
-    type: ReactionType;
-    count: number;
+    reaction: ReactionType;
+    count?: number;
+    postId: number;
 }
 
 export type ReactionType = 'LIKE' | 'SMILE' | 'LOVE';

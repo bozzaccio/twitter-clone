@@ -10,11 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [LoginComponent,
     RegisterComponent,
-    PageNotFoundComponent],
+    PageNotFoundComponent,
+    NavbarComponent,
+    FooterComponent],
   imports: [
     CommonModule,
     MatBadgeModule,
@@ -27,6 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   exports: [LoginComponent,
     RegisterComponent,
+    NavbarComponent,
+    FooterComponent,
     PageNotFoundComponent],
 })
 export class SharedModule { }

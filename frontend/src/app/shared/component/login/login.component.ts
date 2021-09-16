@@ -40,7 +40,6 @@ export class LoginComponent {
         this._tokenStorage.saveUser(data.body.username);
 
         this._router.navigateByUrl('/post');
-
       },
       err => {
         this.hasError = true;
@@ -52,9 +51,5 @@ export class LoginComponent {
 
   public onRegister(): void {
     this._router.navigateByUrl('register');
-  }
-
-  private _reloadPage(): void {
-    window.location.reload();
   }
 }

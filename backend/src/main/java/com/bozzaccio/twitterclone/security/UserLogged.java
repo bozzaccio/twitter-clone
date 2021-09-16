@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Objects;
 
-public class User implements UserDetails {
+public class UserLogged implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,16 +17,16 @@ public class User implements UserDetails {
     @JsonIgnore
     private final String password;
 
-    public User(Long id, String username, String email, String password) {
+    public UserLogged(Long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public static User build(com.bozzaccio.twitterclone.entity.User user) {
+    public static UserLogged build(com.bozzaccio.twitterclone.entity.User user) {
 
-        return new User(
+        return new UserLogged(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
@@ -82,7 +82,7 @@ public class User implements UserDetails {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+        UserLogged userLogged = (UserLogged) o;
+        return Objects.equals(id, userLogged.id);
     }
 }

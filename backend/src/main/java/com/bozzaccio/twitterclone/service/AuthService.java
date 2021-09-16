@@ -1,6 +1,6 @@
 package com.bozzaccio.twitterclone.service;
 
-import com.bozzaccio.twitterclone.security.User;
+import com.bozzaccio.twitterclone.security.UserLogged;
 import com.bozzaccio.twitterclone.security.dto.AuthResponse;
 import com.bozzaccio.twitterclone.security.dto.LoginRequest;
 import com.bozzaccio.twitterclone.security.dto.RegisterRequest;
@@ -41,12 +41,12 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final String jwt = jwtUtils.generateJwtToken(authentication);
 
-        User userDetails = (User) authentication.getPrincipal();
+        UserLogged userLogged = (UserLogged) authentication.getPrincipal();
 
         return ResponseEntity.ok(new AuthResponse(jwt,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getEmail()));
+                userLogged.getId(),
+                userLogged.getUsername(),
+                userLogged.getEmail()));
     }
 
     public ResponseEntity<?> register(RegisterRequest request) {
