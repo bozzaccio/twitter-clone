@@ -28,6 +28,6 @@
             matBadgeColor="accent">favorite</mat-icon>
         <mat-icon (click)="onAddReaction('SMILE')" class="reaction" matBadgePosition="before" [matBadge]="smileCounter"
             matBadgeColor="warn">mood</mat-icon>
-        <mat-icon class="comment" [matBadge]="commentCounter" matBadgeColor="warn">chat</mat-icon>
+        <mat-icon (click)="onCommentClick()" class="comment" [matBadge]="commentCounter" matBadgeColor="warn">chat</mat-icon>
     </div>
 </div>

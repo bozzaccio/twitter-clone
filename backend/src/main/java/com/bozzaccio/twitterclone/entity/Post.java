@@ -28,7 +28,7 @@ public class Post extends BaseEntity<Long> {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @OneToMany(mappedBy = "postComment",
+    @OneToMany(mappedBy = "post",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
@@ -36,7 +36,7 @@ public class Post extends BaseEntity<Long> {
     @Column(name = "COMMENT_COUNTER")
     private Long commentCounter;
 
-    @OneToMany(mappedBy = "postReaction",
+    @OneToMany(mappedBy = "post",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Reaction> reactions = new ArrayList<>();

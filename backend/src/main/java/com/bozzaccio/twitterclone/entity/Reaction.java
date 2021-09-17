@@ -28,7 +28,7 @@ public class Reaction extends BaseEntity<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false, foreignKey = @ForeignKey(name = "FK_T_POST_REACTION"))
-    private Post postReaction;
+    private Post post;
 
     @Override
     public Long getId() {
@@ -61,10 +61,10 @@ public class Reaction extends BaseEntity<Long> {
     }
 
     public Post getPostReaction() {
-        return postReaction;
+        return post;
     }
 
     public void setPostReaction(Post postReaction) {
-        this.postReaction = postReaction;
+        this.post = postReaction;
     }
 }
