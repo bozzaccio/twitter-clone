@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   @Output() onDeleteEvent: EventEmitter<Post> = new EventEmitter();
   @Output() onUpdateEvent: EventEmitter<Post> = new EventEmitter();
   @Output() onReactionEvent: EventEmitter<Reaction> = new EventEmitter();
+  @Output() onCommentEvent: EventEmitter<Post> = new EventEmitter();
 
   public likeCounter: number = 0;
   public loveCounter: number = 0;
@@ -45,6 +46,11 @@ export class PostComponent implements OnInit {
   public onUpdate(): void {
     if (this.post)
       this.onUpdateEvent.emit(this.post);
+  }
+
+  public onCommentClick(): void {
+    if (this.post)
+      this.onCommentEvent.emit(this.post);
   }
 
   public onAddReaction(reaction: ReactionType): void {

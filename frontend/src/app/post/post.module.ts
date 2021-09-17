@@ -15,8 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PostFormModalComponent } from './component/post-form-modal/post-form-modal.component';
+import { CommentModalComponent } from './component/comment-modal/comment-modal.component';
+import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { PostFormModalComponent } from './component/post-form-modal/post-form-mo
     PostComponent,
     PostListComponent,
     PostFormComponent,
-    PostFormModalComponent
+    PostFormModalComponent,
+    CommentModalComponent
   ],
   imports: [
     CommonModule,
@@ -38,9 +42,11 @@ import { PostFormModalComponent } from './component/post-form-modal/post-form-mo
     MatInputModule,
     MatButtonModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    FormsModule
   ],
-  entryComponents: [PostFormModalComponent],
+  entryComponents: [PostFormModalComponent, CommentModalComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class PostModule { }

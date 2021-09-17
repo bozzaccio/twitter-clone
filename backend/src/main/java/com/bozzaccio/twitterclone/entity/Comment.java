@@ -23,7 +23,7 @@ public class Comment extends BaseEntity<Long> {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false, foreignKey = @ForeignKey(name = "FK_T_POST_COMMENT"))
-    private Post postComment;
+    private Post post;
 
     @Override
     public Long getId() {
@@ -44,10 +44,10 @@ public class Comment extends BaseEntity<Long> {
     }
 
     public Post getPostComment() {
-        return postComment;
+        return post;
     }
 
     public void setPostComment(Post postComment) {
-        this.postComment = postComment;
+        this.post = postComment;
     }
 }

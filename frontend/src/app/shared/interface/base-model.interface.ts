@@ -1,7 +1,7 @@
 export interface BaseModel {
     id?: number;
     creationTimestamp?: Date;
-    creationUser?: number;
+    creationUser?: string;
     updateTimestamp?: Date;
     updateUser?: string;
     version?: string;

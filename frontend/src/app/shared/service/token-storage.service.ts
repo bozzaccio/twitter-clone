@@ -9,7 +9,7 @@ export class TokenStorageService {
     private readonly _TOKEN_KEY = 'auth-token';
     private readonly _USER_KEY = 'auth-user';
 
-    private _userSubject: Subject<string> = new Subject();
+    private _userSubject$: Subject<string> = new Subject();
 
     signOut(): void {
         window.sessionStorage.clear();
@@ -27,7 +27,7 @@ export class TokenStorageService {
     public saveUser(user: string): void {
         window.sessionStorage.removeItem(this._USER_KEY);
         window.sessionStorage.setItem(this._USER_KEY, JSON.stringify(user));
-        this._userSubject.next(user);
+        this._userSubject$.next(user);
     }
 
     public getUser(): string | null {
@@ -41,6 +41,6 @@ export class TokenStorageService {
 
     public getUserObs(): Observable<string> {
 
-        return this._userSubject.asObservable();
+        return this._userSubject$.asObservable();
     }
 }
